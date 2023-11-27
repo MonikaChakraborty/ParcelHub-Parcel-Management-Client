@@ -4,6 +4,7 @@ import image from '../../assets/login2.png'
 import { AuthContext } from '../../providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
 
@@ -12,6 +13,7 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+  
   console.log('State in the location login page', location.state);
 
     const handleLogin = event => {
@@ -97,8 +99,10 @@ const Login = () => {
             </div>
           </form>
           <p className='text-center p-5'><small>New here? <Link className='text-primary font-bold' to="/signUp">Create an account</Link></small></p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
+      
     </div>
   );
 };

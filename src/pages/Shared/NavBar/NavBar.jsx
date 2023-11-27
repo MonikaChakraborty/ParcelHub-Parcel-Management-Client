@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "/logo1.png";
 import { BiBellPlus } from "react-icons/bi";
 
@@ -46,7 +46,7 @@ const NavBar = () => {
         </NavLink>
       </li> */}
 
-      <li>
+      {/* <li>
         <NavLink
           to="/footer"
           className={({ isActive, isPending }) =>
@@ -59,12 +59,12 @@ const NavBar = () => {
         >
           Footer
         </NavLink>
-      </li>
+      </li> */}
 
 
       <li>
         <NavLink
-          to="/dashboard/parcels"
+          to="/dashboard/bookParcel"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
@@ -159,8 +159,8 @@ const NavBar = () => {
           </div>
 
           
-            <img className="w-20 object-cover" src={logo} alt="" />
-          <a className=" btn-ghost text-xl ml-1">Parcel<span>Hub</span>
+            <img className="md:w-20 w-14 object-cover" src={logo} alt="" />
+          <a className="btn-ghost md:text-2xl font-bold text-sky-500">Parcel<span className="text-yellow-500">Hub</span>
           </a>
          
         </div>
@@ -176,7 +176,7 @@ const NavBar = () => {
                   className="btn btn-ghost btn-circle avatar mr-3"
                 >
                   <div className="w-14 rounded-full">
-                    {/* <img src={profilePic} /> */}
+                    
                     <img src={user.photoURL} alt={user.displayName} />
                   </div>
                 </label>
@@ -190,6 +190,16 @@ const NavBar = () => {
                       {user.displayName}
                     </p>
                   </div>
+                 <li>
+                 <Link className="btn  mb-2 bg-gray-600 " to="/dashboard/bookParcel">
+                    <button
+                      
+                      className=" text-sm text-gray-200 text-center lg:text-base  normal-case "
+                    >
+                      Dashboard
+                    </button>
+                  </Link>
+                 </li>
 
                   <li>
                     <button

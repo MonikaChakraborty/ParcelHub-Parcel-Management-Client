@@ -4,8 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../Login/SocialLogin";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
+
   const {
     register,
     handleSubmit,
@@ -18,21 +22,33 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    createUser(data.email, data.password, data.userType).then((result) => {
+    createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("user profile info updated");
-          reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User Created Successfully",
-            showConfirmButton: false,
-            timer: 1500,
+          // user entry to database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+            type: data.userType
+          };
+
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log('user added to the database');
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User Created Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              
+              navigate("/");
+            }
           });
-          navigate("/");
         })
         .catch((error) => console.log(error));
     });
@@ -149,7 +165,6 @@ const SignUp = () => {
                 </option>
                 <option value="user">User</option>
                 <option value="deliveryMan">Delivery Man</option>
-               
               </select>
               {errors.userType && (
                 <span className="text-red-600">User Type is required</span>
@@ -171,6 +186,7 @@ const SignUp = () => {
               </Link>
             </small>
           </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
