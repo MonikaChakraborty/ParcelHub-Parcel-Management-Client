@@ -14,9 +14,9 @@ const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
 
 
-    const createUser = (email, password) => {
+    const createUser = (email, password, userType) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password, userType)
     }
 
     const signIn = (email, password) => {
@@ -29,7 +29,7 @@ const AuthProvider = ({children}) => {
         return signOut(auth);
       };
 
-      const updateUserProfile = (name, photo) => {
+      const updateUserProfile = (name, photo, ) => {
         return updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photo,

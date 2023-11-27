@@ -60,6 +60,26 @@ const NavBar = () => {
           Footer
         </NavLink>
       </li>
+
+
+      <li>
+        <NavLink
+          to="/dashboard/parcels"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-yellow-200 font-medium bg-sky-500 text-xl mb-2"
+              : "text-yellow-300 font-medium text-xl hover:bg-sky-500 hover:text-gray-200 mb-2"
+          }
+        >
+          Dashboard
+        </NavLink>
+      </li>
+
+      
+
+
       <li>
         <NavLink
           to="/secret"
