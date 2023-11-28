@@ -15,6 +15,17 @@ const AuthProvider = ({children}) => {
     const googleProvider = new GoogleAuthProvider();
 
 
+    // Refetch function to be used in components
+  const refetch = () => {
+    setLoading(true);
+    return getAuth().currentUser.reload().then(() => {
+      setUser(getAuth().currentUser);
+      setLoading(false);
+    });
+  };
+
+
+
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
@@ -67,7 +78,8 @@ const AuthProvider = ({children}) => {
         signIn,
         googleSignIn,
         logOut,
-        updateUserProfile
+        updateUserProfile,
+        refetch
     }
 
 

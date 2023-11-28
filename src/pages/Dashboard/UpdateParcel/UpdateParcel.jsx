@@ -5,12 +5,11 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { MdOutlineEdit } from "react-icons/md";
 import useParcel from "../../../hooks/useParcel";
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const UpdateParcel = () => {
   const {phoneNumber, parcelType, parcelWeight, receiverName, receiverNumber, requestedDeliveryDate, latitude, longitude, deliveryAddress, _id} = useLoaderData();
 
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const [, refetch] = useParcel();
   const { register, handleSubmit, reset, control } = useForm();
@@ -49,7 +48,7 @@ const UpdateParcel = () => {
     //   bookingDate: bookingDate.toLocaleDateString("en-GB"),
     };
     // console.log(parcelItem);
-    axiosPublic.patch(`/parcels/${_id}`, parcelItem).then((res) => {
+    axiosSecure.patch(`/parcels/${_id}`, parcelItem).then((res) => {
       console.log(res.data);
 
       if (res.data.modifiedCount > 0) {

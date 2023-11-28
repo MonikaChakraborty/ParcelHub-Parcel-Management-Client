@@ -60,7 +60,8 @@ export const router = createBrowserRouter([
 
       {
         path: "profile",
-        element: <Profile></Profile>
+        element: <Profile></Profile>,
+        // loader: () => fetch('http://localhost:5000/users')
       },
     ],
   },

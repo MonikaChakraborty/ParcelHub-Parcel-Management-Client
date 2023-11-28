@@ -5,13 +5,13 @@ import { FaRegStar } from "react-icons/fa6";
 import { MdAttachMoney } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 
 const Parcels = () => {
   const [parcel, refetch] = useParcel();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const totalPrice = parcel.reduce((total, item) => total + item.price, 0);
 
   const handleCancel = async(id, status) => {
@@ -32,7 +32,7 @@ const Parcels = () => {
       // Send request to cancel booking and update status
       try {
         // Assuming you have an API endpoint for canceling a booking
-        const response = await axiosPublic.patch(`/parcelsCancel/${id}`, { bookingStatus: 'cancelled' });
+        const response = await axiosSecure.patch(`/parcelsCancel/${id}`, { bookingStatus: 'cancelled' });
 
         if (response.data.modifiedCount > 0) {
           Swal.fire({
