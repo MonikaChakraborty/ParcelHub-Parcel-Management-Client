@@ -6,9 +6,10 @@ import SignUp from "../pages/SignUp/SignUp";
 import Secret from "../pages/Shared/Secret/Secret";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
-import Parcels from "../pages/Dashboard/Bookings/Parcels";
-import BookParcel from "../pages/Dashboard/BookParcel";
-import Profile from "../Layout/Profile";
+import Parcels from "../pages/Dashboard/Parcels/Parcels";
+import BookParcel from "../pages/Dashboard/Bookings/BookParcel";
+import Profile from "../pages/Dashboard/Profile/Profile";
+import UpdateParcel from "../pages/Dashboard/UpdateParcel/UpdateParcel";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,11 @@ export const router = createBrowserRouter([
       {
         path: "bookParcel",
         element: <BookParcel></BookParcel>,
+      },
+      {
+        path: "updateParcel/:id",
+        element: <UpdateParcel></UpdateParcel>,
+        loader: ({params}) => fetch(`http://localhost:5000/parcels/${params.id}`)
       },
 
       {

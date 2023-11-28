@@ -31,35 +31,7 @@ const NavBar = () => {
         </NavLink>
       </li>
 
-      {/* <li>
-        <NavLink
-          to="/OurFeatures"
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "text-gray-200 bg-amber-600 text-lg font-semibold mb-2"
-              : "text-xl hover:bg-amber-600 hover:text-gray-200 text-gray-200 font-semibold"
-          }
-        >
-          Our Features
-        </NavLink>
-      </li> */}
-
-      {/* <li>
-        <NavLink
-          to="/footer"
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "text-yellow-200 font-medium bg-sky-500 text-xl mb-2"
-              : "text-yellow-300 font-medium text-xl hover:bg-sky-500 hover:text-gray-200 mb-2"
-          }
-        >
-          Footer
-        </NavLink>
-      </li> */}
+     
 
 
       <li>
@@ -91,7 +63,7 @@ const NavBar = () => {
               : "text-yellow-300 font-medium text-xl hover:bg-sky-500 hover:text-gray-200 mb-2"
           }
         >
-          Secret
+          Private
         </NavLink>
       </li>
 
