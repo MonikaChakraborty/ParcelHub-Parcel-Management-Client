@@ -33,6 +33,7 @@ const BookParcel = () => {
     }, [parcelWeight]);
   
     const onSubmit = async (data) => {
+      // const userId = user._id;
    
       const bookingDate = new Date();
     //   console.log(typeof(price));
@@ -51,6 +52,9 @@ const BookParcel = () => {
         bookingStatus: 'pending',
         price: calculatedPrice,
         bookingDate: bookingDate.toLocaleDateString('en-GB'),
+        approximateDeliveryDate: '',
+        deliveryManId: '',
+        // userId
       };
       // console.log(parcelItem);
       axiosSecure.post('/parcels', parcelItem)

@@ -10,6 +10,10 @@ import Parcels from "../pages/Dashboard/Parcels/Parcels";
 import BookParcel from "../pages/Dashboard/Bookings/BookParcel";
 import Profile from "../pages/Dashboard/Profile/Profile";
 import UpdateParcel from "../pages/Dashboard/UpdateParcel/UpdateParcel";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import AllDeliveryMen from "../pages/Dashboard/AllDeliveryMen/AllDeliveryMen";
+import AllParcels from "../pages/Dashboard/AllParcels/AllParcels";
+import Statistics from "../pages/Dashboard/Statistics/Statistics";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +67,27 @@ export const router = createBrowserRouter([
         element: <Profile></Profile>,
         // loader: () => fetch('http://localhost:5000/users')
       },
+
+
+      // admin routes
+      {
+        path: 'allParcels',
+        element: <AllParcels></AllParcels>,
+      },
+      {
+        path: 'allUsers',
+        element: <AllUsers></AllUsers>,
+
+      },
+      {
+        path: 'allDeliveryMen',
+        element: <AllDeliveryMen></AllDeliveryMen>
+      },
+      {
+        path: 'statistics',
+        element: <Statistics></Statistics>
+      }
+
     ],
   },
 ]);

@@ -52,7 +52,7 @@ const UpdateParcel = () => {
       console.log(res.data);
 
       if (res.data.modifiedCount > 0) {
-        Swal.fire({
+        Swal.fire({loader: () => fetch('http://localhost:5000/users'),
           position: "top-end",
           icon: "success",
           title: "Your Parcel is Updated",
