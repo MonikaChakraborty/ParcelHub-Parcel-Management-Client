@@ -4,9 +4,13 @@ import { BiBellPlus } from "react-icons/bi";
 
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
+import useDeliveryMan from "../../../hooks/useDeliveryMan";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const [isDeliveryMan] = useDeliveryMan();
 
   const handleLogout = () => {
     logOut()
@@ -31,28 +35,58 @@ const NavBar = () => {
         </NavLink>
       </li>
 
-     
+      {user && isAdmin && (
+        <li>
+          <NavLink
+            to="/dashboard/statistics"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "text-yellow-200 font-medium bg-sky-500 text-xl mb-2"
+                : "text-yellow-300 font-medium text-xl hover:bg-sky-500 hover:text-gray-200 mb-2"
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
 
+      {user && isDeliveryMan && (
+        <li>
+          <NavLink
+            to="/dashboard/deliveryList"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "text-yellow-200 font-medium bg-sky-500 text-xl mb-2"
+                : "text-yellow-300 font-medium text-xl hover:bg-sky-500 hover:text-gray-200 mb-2"
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
 
-      <li>
-        <NavLink
-          to="/dashboard/bookParcel"
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "text-yellow-200 font-medium bg-sky-500 text-xl mb-2"
-              : "text-yellow-300 font-medium text-xl hover:bg-sky-500 hover:text-gray-200 mb-2"
-          }
-        >
-          Dashboard
-        </NavLink>
-      </li>
+      {user && !isAdmin && !isDeliveryMan && (
+        <li>
+          <NavLink
+            to="/dashboard/bookParcel"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "text-yellow-200 font-medium bg-sky-500 text-xl mb-2"
+                : "text-yellow-300 font-medium text-xl hover:bg-sky-500 hover:text-gray-200 mb-2"
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
 
-      
-
-
-      <li>
+      {/* <li>
         <NavLink
           to="/secret"
           className={({ isActive, isPending }) =>
@@ -65,19 +99,17 @@ const NavBar = () => {
         >
           Private
         </NavLink>
-      </li>
+      </li> */}
 
       <li>
-          <button className="mb-2">
-            <BiBellPlus className="text-3xl text-yellow-300" />
+        <button className="mb-2">
+          <BiBellPlus className="text-3xl text-yellow-300" />
 
-            <div className="text-lg px-3">
-            
-            </div>
-          </button>
+          <div className="text-lg px-3"></div>
+        </button>
       </li>
 
-      { user ? (
+      {user ? (
         <>
           <button
             onClick={handleLogout}
@@ -130,17 +162,16 @@ const NavBar = () => {
             </ul>
           </div>
 
-          
-            <img className="md:w-20 w-14 object-cover" src={logo} alt="" />
-          <a className="btn-ghost md:text-2xl font-bold text-sky-500">Parcel<span className="text-yellow-500">Hub</span>
+          <img className="md:w-20 w-14 object-cover" src={logo} alt="" />
+          <a className="btn-ghost md:text-2xl font-bold text-sky-500">
+            Parcel<span className="text-yellow-500">Hub</span>
           </a>
-         
         </div>
         <div className="navbar-center hidden lg:flex lg:items-center lg:mt-5">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
         <div className="navbar-end mt-2">
-        {user?.email ? (
+          {user?.email ? (
             <div className="flex ">
               <div className="dropdown dropdown-end">
                 <label
@@ -148,7 +179,6 @@ const NavBar = () => {
                   className="btn btn-ghost btn-circle avatar mr-3"
                 >
                   <div className="w-14 rounded-full">
-                    
                     <img src={user.photoURL} alt={user.displayName} />
                   </div>
                 </label>
@@ -162,16 +192,45 @@ const NavBar = () => {
                       {user.displayName}
                     </p>
                   </div>
-                 <li>
-                 <Link className="btn  mb-2 bg-gray-600 " to="/dashboard/bookParcel">
-                    <button
-                      
-                      className=" text-sm text-gray-200 text-center lg:text-base  normal-case "
-                    >
-                      Dashboard
-                    </button>
-                  </Link>
-                 </li>
+                  {user && isAdmin && (
+                      <li>
+                        <Link
+                          className="btn  mb-2 bg-gray-600 "
+                          to="/dashboard/statistics"
+                        >
+                          <button className=" text-sm text-gray-200 text-center lg:text-base  normal-case ">
+                            Dashboard
+                          </button>
+                        </Link>
+                      </li>
+                    )}
+
+                  {user &&
+                    isDeliveryMan && (
+                      <li>
+                        <Link
+                          className="btn  mb-2 bg-gray-600 "
+                          to="/dashboard/deliveryList"
+                        >
+                          <button className=" text-sm text-gray-200 text-center lg:text-base  normal-case ">
+                            Dashboard
+                          </button>
+                        </Link>
+                      </li>
+                    )}
+
+                  {user && !isAdmin && !isDeliveryMan && (
+                    <li>
+                      <Link
+                        className="btn  mb-2 bg-gray-600 "
+                        to="/dashboard/bookParcel"
+                      >
+                        <button className=" text-sm text-gray-200 text-center lg:text-base  normal-case ">
+                          Dashboard
+                        </button>
+                      </Link>
+                    </li>
+                  )}
 
                   <li>
                     <button
@@ -200,6 +259,5 @@ const NavBar = () => {
     </>
   );
 };
-
 
 export default NavBar;

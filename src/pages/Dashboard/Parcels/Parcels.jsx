@@ -13,8 +13,7 @@ const Parcels = () => {
   const axiosSecure = useAxiosSecure();
   const totalPrice = parcel.reduce((total, item) => total + item.price, 0);
 
-  const [filterStatus, setFilterStatus] = useState("all"); // Initial filter status
-
+  const [filterStatus, setFilterStatus] = useState("all");
 
   const handleCancel = async (id, status) => {
     if (status === "pending") {
@@ -63,7 +62,7 @@ const Parcels = () => {
 
   const filteredParcel = parcel.filter((item) => {
     if (filterStatus === "all") {
-      return true; // Show all parcels
+      return true; 
     } else {
       return item.bookingStatus === filterStatus;
     }
@@ -160,10 +159,23 @@ const Parcels = () => {
                   </button>
                 </td>
                 <td>
+                  {item.bookingStatus === "delivered" ? (
+                    
+                      <button className="btn bg-yellow-500 text-xl">
+                        <FaRegStar></FaRegStar>
+                      </button>
+                   
+                  ) : (
+                    <button className="btn bg-yellow-500 text-xl" disabled>
+                      <FaRegStar></FaRegStar>
+                    </button>
+                  )}
+                </td>
+                {/* <td>
                   <button className="btn bg-orange-500  text-xl text-yellow-300">
                     <FaRegStar></FaRegStar>
                   </button>
-                </td>
+                </td> */}
                 <td>
                   <button className="btn bg-sky-500  text-xl text-white">
                     <MdAttachMoney></MdAttachMoney>

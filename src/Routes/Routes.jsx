@@ -14,6 +14,8 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AllDeliveryMen from "../pages/Dashboard/AllDeliveryMen/AllDeliveryMen";
 import AllParcels from "../pages/Dashboard/AllParcels/AllParcels";
 import Statistics from "../pages/Dashboard/Statistics/Statistics";
+import Reviews from "../pages/Dashboard/Reviews/Reviews";
+import DeliveryList from "../pages/Dashboard/DeliveryList/DeliveryList";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +68,16 @@ export const router = createBrowserRouter([
         path: "profile",
         element: <Profile></Profile>,
         // loader: () => fetch('http://localhost:5000/users')
+      },
+
+      {
+        path: "reviews",
+        element: <Reviews></Reviews>
+      },
+
+      {
+        path: "deliveryList",
+        element: <DeliveryList></DeliveryList>
       },
 
 

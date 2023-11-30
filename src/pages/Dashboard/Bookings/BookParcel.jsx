@@ -54,6 +54,7 @@ const BookParcel = () => {
         bookingDate: bookingDate.toLocaleDateString('en-GB'),
         approximateDeliveryDate: '',
         deliveryManId: '',
+        deliveryManEmail: '',
         // userId
       };
       // console.log(parcelItem);
