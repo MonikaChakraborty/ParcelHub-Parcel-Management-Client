@@ -1,6 +1,6 @@
 # ParcelHub 
 
-## Live Link:  
+## Live Link: https://parcel-management-31c28.web.app/
 
 ## Features
 
@@ -8,23 +8,24 @@
 
 
 
-<!-- - Add Products - User can add products with different brand names, images, types and other information using the form on the Add Products page. -->
+- Add User type - User can add as delivery man or a user 
 
 
 
-<!-- - Brands and Products: The homepage displays various brand names with images. Clicking on each brand will navigate the user to the products page specifically added to the brand he or she clicked. -->
+- different dashboards: different type of the users will be shown different dashboards
 
 
 
-<!-- - Product Details: On the Product Details page, user can click on the "Details" button to view product details and the "Update" button to modify product information. -->
+- book parcel: user can book parcel or cancel parcel
 
 
 
-<!-- - Add to Cart: The Details page features an "Add to Cart" button to include a product in the user's cart. -->
+- user profile: user can change the profile image
 
 
 
-<!-- - My Cart and Delete cart item: My cart page shows the products, the user added to his or her cart. User also can delete any item from the cart. -->
+
+- delivery man: there are delivery man functionalities
 
 
 

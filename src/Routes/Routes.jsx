@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
       {
         path: "updateParcel/:id",
         element: <UpdateParcel></UpdateParcel>,
-        loader: ({params}) => fetch(`http://localhost:5000/parcels/${params.id}`)
+        loader: ({params}) => fetch(`https://parcel-management-server-wheat.vercel.app/parcels/${params.id}`)
       },
 
       {

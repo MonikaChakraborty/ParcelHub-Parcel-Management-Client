@@ -52,7 +52,7 @@ const UpdateParcel = () => {
       console.log(res.data);
 
       if (res.data.modifiedCount > 0) {
-        Swal.fire({loader: () => fetch('http://localhost:5000/users'),
+        Swal.fire({loader: () => fetch('https://parcel-management-server-wheat.vercel.app/users'),
           position: "top-end",
           icon: "success",
           title: "Your Parcel is Updated",
